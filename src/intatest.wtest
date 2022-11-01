@@ -1,0 +1,35 @@
+import plantas.*
+import parcelas.*
+import inta.*
+describe "Test de INTA"  {
+    
+	const parcela1 = new Parcela(ancho=20, largo=1, horasDeSol=8)
+	const parcela2 = new Parcela(ancho=20, largo=10, horasDeSol=8)
+	const parcela3 = new Parcela(ancho=20, largo=12, horasDeSol=8)
+	const parcela4 = new Parcela(ancho=20, largo=11, horasDeSol=8)
+    const quinoa1 = new Quinoa(anioObtencion=2001,horasToleradas=11,altura=0)
+    const quinoa2 = new Quinoa(anioObtencion=2001,horasToleradas=11,altura=0)
+    const quinoa3 = new Quinoa(anioObtencion=2001,horasToleradas=11,altura=0)
+    const quinoa4 = new Quinoa(anioObtencion=2001,horasToleradas=11,altura=0)
+    const quinoa5 = new Quinoa(anioObtencion=2001,horasToleradas=11,altura=0)
+    method initialize() {
+    	inta.agregarParcela(parcela1)
+    	inta.agregarParcela(parcela2)
+    	inta.agregarParcela(parcela3)
+    	inta.agregarParcela(parcela4)
+    	parcela1.plantarUnaPlanta(quinoa1)
+    	parcela1.plantarUnaPlanta(quinoa2)
+    	parcela1.plantarUnaPlanta(quinoa3)
+    	parcela1.plantarUnaPlanta(quinoa4)
+    	parcela1.plantarUnaPlanta(quinoa5)
+    }
+    
+    test "cant de plantas totales"{
+    	assert.equals(5, parcela1.cantPlantas())
+    }
+    test "INTA tiene un promedio de plantas por parcela es de 4 plantas por parcela"{
+    	assert.equals(3, inta.promedioDePlantas())
+    }
+    
+    test "la parcela mas autosustetable es la parcela"
+}

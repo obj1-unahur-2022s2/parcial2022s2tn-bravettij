@@ -1,2 +1,24 @@
 import parcelas.*
-
+import plantas.*
+describe "Test de Parcelas"  {
+	const parcela1 = new Parcela(ancho=20, largo=1, horasDeSol=8)
+    const quinoa1 = new Quinoa(anioObtencion=2001,horasToleradas=9)
+    const quinoa2 = new Quinoa(anioObtencion=2001,horasToleradas=9)
+    const quinoa3 = new Quinoa(anioObtencion=2001,horasToleradas=9)
+    const quinoa4 = new Quinoa(anioObtencion=2001,horasToleradas=9)
+    method initialize(){
+    	parcela1.plantarUnaPlanta(quinoa1)
+    	parcela1.plantarUnaPlanta(quinoa2)
+    	parcela1.plantarUnaPlanta(quinoa3)
+    	parcela1.plantarUnaPlanta(quinoa4)
+    }
+	test "parcela1 tiene una superficie de 20 m2"{
+		assert.equals(20, parcela1.superficie())
+	}
+	test "parcela1 tolera 4 plantas como maximo"{
+		assert.equals(4, parcela1.cantMaxima())
+	}
+	test "parcela1 no tiene complicaciones"{
+		assert.notThat(parcela1.tieneComplicaciones())
+	}
+}

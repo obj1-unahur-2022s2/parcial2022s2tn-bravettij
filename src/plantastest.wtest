@@ -1,17 +1,53 @@
 import plantas.*
 describe "Test de Plantas"  {
 	
-	const menta1 = new Menta()
-	
+	const menta1 = new Menta(anioObtencion=2020, altura=1)
+	const menta2 = new Menta(anioObtencion=2020, altura=0.3)
+	const soja1 = new Soja(anioObtencion=2009, altura=0.6)
+	const quinoa1 = new Quinoa(anioObtencion=2010,horasToleradas=12)
+	const quinoa2 = new Quinoa(anioObtencion=2001,horasToleradas=9)
+	const hierbabuena1 = new Hierbabuena(anioObtencion=2020, altura=1)
+	const sojaTrans1 = new SojaTransgenica(anioObtencion=2009, altura=1.2)
 	method initialize() {
-		menta1.valor(3)
+		
 	}
 	
-	test "Menta - test de ejemplo" {
-		assert.equals(3, menta1.valor())
-
+	test "Menta1 da semillas" {
+		assert.that(menta1.daSemillas())
+	}
+	test "Menta1 ocupa un espacio de 3 m2"{
+		assert.equals(3, menta1.espacioOcupa())
+	}
+	test "Menta2 no da semillas"{
+		assert.notThat(menta2.daSemillas())
+	}
+	test "Menta2 ocupa 0.9 m2"{
+		assert.equals(0.9, menta2.espacioOcupa())
 	}
 	
+	test "Soja1 tolera 7hs de sol"{
+		assert.that(soja1.horasDeSolToleradas() == 7)
+	}
+	test "Soja1 no da semillas"{
+		assert.notThat(soja1.daSemillas())
+	}
+	test "soja1 ocupa 0.3 m2"{
+		assert.equals(0.3, soja1.espacioOcupa())
+	}
+	
+	test "quinoa1 da semillas"{
+		assert.that(quinoa1.daSemillas())
+	}
+	test "quinoa2 da semillas"{
+		assert.that(quinoa2.daSemillas())
+	}
+	
+	test "hierbabuena1 ocupa 6 m2"{
+		assert.equals(6, hierbabuena1.espacioOcupa())
+	}
+	test "sojaTrans1 no da semilla"{
+		assert.notThat(sojaTrans1.daSemillas())
+	}
 }
 
 
