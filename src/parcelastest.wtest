@@ -21,4 +21,13 @@ describe "Test de Parcelas"  {
 	test "parcela1 no tiene complicaciones"{
 		assert.notThat(parcela1.tieneComplicaciones())
 	}
+	test "parcela1 tiene 4 plantas"{
+		assert.that(parcela1.cantPlantas() == 4)
+	}
+	test "quinoa1 se asocia bien en parcela1"{
+		assert.that(quinoa1.seAsociaBien(parcela1))
+	}
+	test "no hay planta mayor a 5"{
+    	assert.that(parcela1.noHayPlantaMayorA(5))
+    }
 }

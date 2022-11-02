@@ -3,7 +3,7 @@ import parcelas.*
 import inta.*
 describe "Test de INTA"  {
     
-	const parcela1 = new Parcela(ancho=20, largo=1, horasDeSol=8)
+	const parcela1 = new Parcela(ancho=20, largo=10, horasDeSol=8)
 	const parcela2 = new Parcela(ancho=20, largo=10, horasDeSol=8)
 	const parcela3 = new Parcela(ancho=20, largo=12, horasDeSol=8)
 	const parcela4 = new Parcela(ancho=20, largo=11, horasDeSol=8)
@@ -22,14 +22,21 @@ describe "Test de INTA"  {
     	parcela1.plantarUnaPlanta(quinoa3)
     	parcela1.plantarUnaPlanta(quinoa4)
     	parcela1.plantarUnaPlanta(quinoa5)
+    	parcela2.plantarUnaPlanta(quinoa1)
+    	parcela2.plantarUnaPlanta(quinoa1)
+    	parcela3.plantarUnaPlanta(quinoa1)
+    	parcela3.plantarUnaPlanta(quinoa1)
+    	parcela4.plantarUnaPlanta(quinoa1)
+    	parcela4.plantarUnaPlanta(quinoa1)
+    	parcela4.plantarUnaPlanta(quinoa1)
+    		
     }
     
-    test "cant de plantas totales"{
-    	assert.equals(5, parcela1.cantPlantas())
-    }
-    test "INTA tiene un promedio de plantas por parcela es de 4 plantas por parcela"{
+    test "INTA tiene un promedio de plantas por parcela es de 3 plantas por parcela"{
     	assert.equals(3, inta.promedioDePlantas())
     }
-    
-    test "la parcela mas autosustetable es la parcela"
+
+    test "la parcela mas autosustetable es la parcela1"{
+    	assert.that(inta.parcelaMasAutosustentable() == parcela1)
+    }
 }

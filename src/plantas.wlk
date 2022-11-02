@@ -2,7 +2,7 @@ import parcelas.*
 
 class Planta {
 	var property anioObtencion
-	var property altura
+	var property altura = 0
 	
 	method esFuerte() {return self.horasDeSolToleradas() > 10}
 	method daSemillas(){return self.esFuerte()}

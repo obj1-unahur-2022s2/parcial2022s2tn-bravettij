@@ -21,6 +21,7 @@ class Parcela {
 	}
 	method hayPlantaNoTolera() {return plantas.any({p => p.horasDeSolToleradas()< horasDeSol} )}
 	method tieneComplicaciones() {return self.hayPlantaNoTolera()}	
-	method noHayPlantaMayorA(alt){ return plantas.any({p => p.altura() > alt})}
-	method porcentajePlantasBienAsociadas() {return plantas.sum({p => p.seAsociaBien(self)}) / plantas }
+	method noHayPlantaMayorA(alt){ return !plantas.any({p => p.altura() > alt})}
+	method parcelaConMasDe4Plantas() {return plantas.size() > 4}
+	method porcentajePlantasBienAsociadas() {return plantas.sum({p => p.seAsociaBien(self)}) / plantas.size() }
 }
