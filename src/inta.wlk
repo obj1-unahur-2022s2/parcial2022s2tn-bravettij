@@ -1,10 +1,14 @@
+/*
+ * agregarParcela y quitarParcela son métodos de indicación NO llevan return
+ * parcelaMasAutosustentable esta mal
+ */
 import parcelas.*
 import plantas.*
 object inta{
 	const parcelas = []
 	
-	method agregarParcela(unaParcela) {return parcelas.add(unaParcela)}
-	method quitarParcela(unaParcela) {return parcelas.remove(unaParcela)}
+	method agregarParcela(unaParcela) { parcelas.add(unaParcela)}
+	method quitarParcela(unaParcela) { parcelas.remove(unaParcela)}
 	method todasLasPlantas() { return parcelas.sum({p => p.cantPlantas()}) }
 	method promedioDePlantas() {return self.todasLasPlantas() / parcelas.size()}
 	

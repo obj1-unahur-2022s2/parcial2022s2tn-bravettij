@@ -1,3 +1,10 @@
+/*
+ * ParcelaEcologica y ParcelaIndustrial debían ser clases que hereden de parcial y no estan modeladas
+ * El método  agregarPlanta(unaPlanta) no lleva RETURN es una indicación
+ * El método quitarPlanta(unaPlanta) no lleva RETURN es una indicación
+ * En el agregar planta falto la validacion que la planta no puede tolerar el sol de la parcela
+ * Para lanzar una excepcion debes usar self.error("ERROR!! Cant...") y usaste un console.println()
+ */
 import plantas.*
 
 class Parcela {
@@ -6,13 +13,14 @@ class Parcela {
 	var property horasDeSol
 	const plantas = []
 	method cantPlantas() {return plantas.size()}
-	method agregarPlanta(unaPlanta) {return plantas.add(unaPlanta)}
+	method agregarPlanta(unaPlanta) {plantas.add(unaPlanta)}
 	method plantarUnaPlanta(unaPlanta) {
 		if (self.cantMaxima() == plantas.size()){
-			console.println('ERROR!! Cantidad maxima alcanzada')
-		}else self.agregarPlanta(unaPlanta)
+			self.error('ERROR!! Cantidad maxima alcanzada')
+		}
+		self.agregarPlanta(unaPlanta)
 	}
-	method quitarPlanta(unaPlanta) {return plantas.remove(unaPlanta)}
+	method quitarPlanta(unaPlanta) {plantas.remove(unaPlanta)}
 	method superficie() {return ancho * largo}
 	method cantMaxima() {
 		if (ancho > largo){

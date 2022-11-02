@@ -1,3 +1,10 @@
+/*
+ * Tuviste algunos errores en los métodos abstractos esParcelaIdeal(unaParcela) y espacioOcupa()
+ * Otros detalles mínimos en los signos y valores de altura en algunos métodos 
+ * El método se asociaBien(unaPlanta) debía ser un método abstracto en las parcialas
+ * Los métodos esEcologica y esIndustrial no van, debias modelar clases que herende de parcelas
+ */
+
 import parcelas.*
 
 class Planta {
@@ -6,9 +13,9 @@ class Planta {
 	
 	method esFuerte() {return self.horasDeSolToleradas() > 10}
 	method daSemillas(){return self.esFuerte()}
-	method horasDeSolToleradas() {}
-	method esParcelaIdeal() {}
-	method seAsociaBien(unaParcela){
+	method horasDeSolToleradas() // debía ser un método abstracto
+	method esParcelaIdeal(unaParcela) // debía ser un método abstracto con un parámetro
+	/*method seAsociaBien(unaParcela){
 		return self.esEcologica(unaParcela) or self.esIndustrial(unaParcela)
 	}
 	method esEcologica(unaParcela){
@@ -17,10 +24,12 @@ class Planta {
 	method esIndustrial(unaParcela){
 		return unaParcela.cantPlantas() > 3 and self.esFuerte()
 	}
+	*/
+	method espacioOcupa()
 }
 
 class Menta inherits Planta {
-	method espacioOcupa() = altura * 3
+	override method espacioOcupa() = altura * 3
 	override method horasDeSolToleradas() {
 		return 6
 	}
@@ -41,12 +50,12 @@ class Soja inherits Planta {
 	override method horasDeSolToleradas(){
 		if (altura < 0.5){
 			return 6
-		}else if (altura < 1){
+		}else if (altura <= 1){
 			return 7
 		}else return 9
 	}
 	override method daSemillas() { return super() or (anioObtencion > 2007 and altura > 1)}
-	method espacioOcupa() {return altura * 0.5}
+	override method espacioOcupa() {return altura * 0.5}
 	override method esParcelaIdeal(unaParcela){
 		return unaParcela.horasDeSol() == self.horasDeSolToleradas()
 	}
@@ -65,11 +74,11 @@ class Quinoa inherits Planta{
 	override method horasDeSolToleradas(){
 		return horasToleradas
 	}
-	method espacioOcupa() = 0.5
+	override method espacioOcupa() = 0.5
 	override method daSemillas() {
 		return super() or anioObtencion < 2005
 	}
 	override method esParcelaIdeal(unaParcela){
-		return unaParcela.noHayPlantaMayorA(5)
+		return unaParcela.noHayPlantaMayorA(1.5) //..cuya altura supere los 1.5 metros;
 	}
 }
